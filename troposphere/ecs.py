@@ -205,7 +205,7 @@ class ManagedInstancesNetworkConfiguration(AWSProperty):
     """
 
     props: PropsDictType = {
-        "SecurityGroups": ([str], False),
+        "SecurityGroups": ([str], True),
         "Subnets": ([str], True),
     }
 
@@ -228,6 +228,7 @@ class InstanceLaunchTemplate(AWSProperty):
     props: PropsDictType = {
         "CapacityOptionType": (str, False),
         "Ec2InstanceProfileArn": (str, True),
+        "FipsEnabled": (boolean, False),
         "InstanceRequirements": (InstanceRequirementsRequest, False),
         "Monitoring": (str, False),
         "NetworkConfiguration": (ManagedInstancesNetworkConfiguration, True),

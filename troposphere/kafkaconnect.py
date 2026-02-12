@@ -50,7 +50,7 @@ class ProvisionedCapacity(AWSProperty):
     """
 
     props: PropsDictType = {
-        "McuCount": (integer, False),
+        "McuCount": (integer, True),
         "WorkerCount": (integer, True),
     }
 

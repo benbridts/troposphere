@@ -122,7 +122,7 @@ class LocationCapacity(AWSProperty):
     props: PropsDictType = {
         "DesiredEC2Instances": (integer, False),
         "MaxSize": (integer, True),
-        "MinSize": (integer, True),
+        "MinSize": (integer, False),
     }
 
 
@@ -642,6 +642,7 @@ class Script(AWSObject):
 
     props: PropsDictType = {
         "Name": (str, False),
+        "NodeJsVersion": (str, False),
         "StorageLocation": (S3Location, True),
         "Tags": (Tags, False),
         "Version": (str, False),

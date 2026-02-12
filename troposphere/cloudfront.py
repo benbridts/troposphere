@@ -962,6 +962,7 @@ class KeyValueStore(AWSObject):
         "Comment": (str, False),
         "ImportSource": (ImportSource, False),
         "Name": (str, True),
+        "Tags": (Tags, False),
     }
 
 

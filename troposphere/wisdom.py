@@ -96,6 +96,18 @@ class AnswerRecommendationAIAgentConfiguration(AWSProperty):
     }
 
 
+class CaseSummarizationAIAgentConfiguration(AWSProperty):
+    """
+    `CaseSummarizationAIAgentConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-casesummarizationaiagentconfiguration.html>`__
+    """
+
+    props: PropsDictType = {
+        "CaseSummarizationAIGuardrailId": (str, False),
+        "CaseSummarizationAIPromptId": (str, False),
+        "Locale": (str, False),
+    }
+
+
 class EmailGenerativeAnswerAIAgentConfiguration(AWSProperty):
     """
     `EmailGenerativeAnswerAIAgentConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-emailgenerativeansweraiagentconfiguration.html>`__
@@ -146,6 +158,128 @@ class ManualSearchAIAgentConfiguration(AWSProperty):
     }
 
 
+class NoteTakingAIAgentConfiguration(AWSProperty):
+    """
+    `NoteTakingAIAgentConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-notetakingaiagentconfiguration.html>`__
+    """
+
+    props: PropsDictType = {
+        "Locale": (str, False),
+        "NoteTakingAIGuardrailId": (str, False),
+        "NoteTakingAIPromptId": (str, False),
+    }
+
+
+class ToolInstruction(AWSProperty):
+    """
+    `ToolInstruction <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-toolinstruction.html>`__
+    """
+
+    props: PropsDictType = {
+        "Examples": ([str], False),
+        "Instruction": (str, False),
+    }
+
+
+class ToolOutputConfiguration(AWSProperty):
+    """
+    `ToolOutputConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-tooloutputconfiguration.html>`__
+    """
+
+    props: PropsDictType = {
+        "OutputVariableNameOverride": (str, False),
+        "SessionDataNamespace": (str, False),
+    }
+
+
+class ToolOutputFilter(AWSProperty):
+    """
+    `ToolOutputFilter <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-tooloutputfilter.html>`__
+    """
+
+    props: PropsDictType = {
+        "JsonPath": (str, True),
+        "OutputConfiguration": (ToolOutputConfiguration, False),
+    }
+
+
+class ToolOverrideConstantInputValue(AWSProperty):
+    """
+    `ToolOverrideConstantInputValue <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-tooloverrideconstantinputvalue.html>`__
+    """
+
+    props: PropsDictType = {
+        "Type": (str, True),
+        "Value": (str, True),
+    }
+
+
+class ToolOverrideInputValueConfiguration(AWSProperty):
+    """
+    `ToolOverrideInputValueConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-tooloverrideinputvalueconfiguration.html>`__
+    """
+
+    props: PropsDictType = {
+        "Constant": (ToolOverrideConstantInputValue, True),
+    }
+
+
+class ToolOverrideInputValue(AWSProperty):
+    """
+    `ToolOverrideInputValue <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-tooloverrideinputvalue.html>`__
+    """
+
+    props: PropsDictType = {
+        "JsonPath": (str, True),
+        "Value": (ToolOverrideInputValueConfiguration, True),
+    }
+
+
+class UserInteractionConfiguration(AWSProperty):
+    """
+    `UserInteractionConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-userinteractionconfiguration.html>`__
+    """
+
+    props: PropsDictType = {
+        "IsUserConfirmationRequired": (boolean, False),
+    }
+
+
+class ToolConfiguration(AWSProperty):
+    """
+    `ToolConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-toolconfiguration.html>`__
+    """
+
+    props: PropsDictType = {
+        "Annotations": (dict, False),
+        "Description": (str, False),
+        "InputSchema": (dict, False),
+        "Instruction": (ToolInstruction, False),
+        "OutputFilters": ([ToolOutputFilter], False),
+        "OutputSchema": (dict, False),
+        "OverrideInputValues": ([ToolOverrideInputValue], False),
+        "Title": (str, False),
+        "ToolId": (str, False),
+        "ToolName": (str, True),
+        "ToolType": (str, True),
+        "UserInteractionConfiguration": (UserInteractionConfiguration, False),
+    }
+
+
+class OrchestrationAIAgentConfiguration(AWSProperty):
+    """
+    `OrchestrationAIAgentConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-orchestrationaiagentconfiguration.html>`__
+    """
+
+    props: PropsDictType = {
+        "ConnectInstanceArn": (str, False),
+        "Locale": (str, False),
+        "OrchestrationAIGuardrailId": (str, False),
+        "OrchestrationAIPromptId": (str, True),
+        "ToolConfigurations": ([ToolConfiguration], False),
+    }
+
+
 class SelfServiceAIAgentConfiguration(AWSProperty):
     """
     `SelfServiceAIAgentConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-selfserviceaiagentconfiguration.html>`__
@@ -169,6 +303,10 @@ class AIAgentConfiguration(AWSProperty):
             AnswerRecommendationAIAgentConfiguration,
             False,
         ),
+        "CaseSummarizationAIAgentConfiguration": (
+            CaseSummarizationAIAgentConfiguration,
+            False,
+        ),
         "EmailGenerativeAnswerAIAgentConfiguration": (
             EmailGenerativeAnswerAIAgentConfiguration,
             False,
@@ -176,6 +314,8 @@ class AIAgentConfiguration(AWSProperty):
         "EmailOverviewAIAgentConfiguration": (EmailOverviewAIAgentConfiguration, False),
         "EmailResponseAIAgentConfiguration": (EmailResponseAIAgentConfiguration, False),
         "ManualSearchAIAgentConfiguration": (ManualSearchAIAgentConfiguration, False),
+        "NoteTakingAIAgentConfiguration": (NoteTakingAIAgentConfiguration, False),
+        "OrchestrationAIAgentConfiguration": (OrchestrationAIAgentConfiguration, False),
         "SelfServiceAIAgentConfiguration": (SelfServiceAIAgentConfiguration, False),
     }
 
