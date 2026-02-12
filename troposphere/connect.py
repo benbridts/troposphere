@@ -795,6 +795,7 @@ class Attributes(AWSProperty):
         "EnhancedContactMonitoring": (boolean, False),
         "HighVolumeOutBound": (boolean, False),
         "InboundCalls": (boolean, True),
+        "MessageStreaming": (boolean, False),
         "MultiPartyChatConference": (boolean, False),
         "MultiPartyConference": (boolean, False),
         "OutboundCalls": (boolean, True),

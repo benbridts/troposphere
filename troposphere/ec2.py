@@ -346,6 +346,7 @@ class EBSBlockDevice(AWSProperty):
 
     props: PropsDictType = {
         "DeleteOnTermination": (boolean, False),
+        "EbsCardIndex": (integer, False),
         "Encrypted": (boolean, False),
         "Iops": (integer, False),
         "KmsKeyId": (str, False),
@@ -3857,6 +3858,7 @@ class VolumeAttachment(AWSObject):
 
     props: PropsDictType = {
         "Device": (str, False),
+        "EbsCardIndex": (integer, False),
         "InstanceId": (str, True),
         "VolumeId": (str, True),
     }

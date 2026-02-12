@@ -265,6 +265,42 @@ class CommandParameterValue(AWSProperty):
     }
 
 
+class CommandParameterValueNumberRange(AWSProperty):
+    """
+    `CommandParameterValueNumberRange <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-command-commandparametervaluenumberrange.html>`__
+    """
+
+    props: PropsDictType = {
+        "Max": (str, True),
+        "Min": (str, True),
+    }
+
+
+class CommandParameterValueComparisonOperand(AWSProperty):
+    """
+    `CommandParameterValueComparisonOperand <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-command-commandparametervaluecomparisonoperand.html>`__
+    """
+
+    props: PropsDictType = {
+        "Number": (str, False),
+        "NumberRange": (CommandParameterValueNumberRange, False),
+        "Numbers": ([str], False),
+        "String": (str, False),
+        "Strings": ([str], False),
+    }
+
+
+class CommandParameterValueCondition(AWSProperty):
+    """
+    `CommandParameterValueCondition <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-command-commandparametervaluecondition.html>`__
+    """
+
+    props: PropsDictType = {
+        "ComparisonOperator": (str, True),
+        "Operand": (CommandParameterValueComparisonOperand, True),
+    }
+
+
 class CommandParameter(AWSProperty):
     """
     `CommandParameter <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-command-commandparameter.html>`__
@@ -274,7 +310,9 @@ class CommandParameter(AWSProperty):
         "DefaultValue": (CommandParameterValue, False),
         "Description": (str, False),
         "Name": (str, True),
+        "Type": (str, False),
         "Value": (CommandParameterValue, False),
+        "ValueConditions": ([CommandParameterValueCondition], False),
     }
 
 
@@ -286,6 +324,26 @@ class CommandPayload(AWSProperty):
     props: PropsDictType = {
         "Content": (str, False),
         "ContentType": (str, False),
+    }
+
+
+class AwsJsonSubstitutionCommandPreprocessorConfig(AWSProperty):
+    """
+    `AwsJsonSubstitutionCommandPreprocessorConfig <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-command-awsjsonsubstitutioncommandpreprocessorconfig.html>`__
+    """
+
+    props: PropsDictType = {
+        "OutputFormat": (str, True),
+    }
+
+
+class CommandPreprocessor(AWSProperty):
+    """
+    `CommandPreprocessor <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-command-commandpreprocessor.html>`__
+    """
+
+    props: PropsDictType = {
+        "AwsJsonSubstitution": (AwsJsonSubstitutionCommandPreprocessorConfig, False),
     }
 
 
@@ -306,7 +364,9 @@ class Command(AWSObject):
         "MandatoryParameters": ([CommandParameter], False),
         "Namespace": (str, False),
         "Payload": (CommandPayload, False),
+        "PayloadTemplate": (str, False),
         "PendingDeletion": (boolean, False),
+        "Preprocessor": (CommandPreprocessor, False),
         "RoleArn": (str, False),
         "Tags": (Tags, False),
     }

@@ -7,7 +7,7 @@
 
 
 from . import AWSObject, AWSProperty, PropsDictType, Tags
-from .validators import boolean, double
+from .validators import boolean, double, integer
 
 
 class AwsLocation(AWSProperty):
@@ -593,10 +593,13 @@ class Environment(AWSObject):
     resource_type = "AWS::DataZone::Environment"
 
     props: PropsDictType = {
+        "DeploymentOrder": (integer, False),
         "Description": (str, False),
         "DomainIdentifier": (str, True),
         "EnvironmentAccountIdentifier": (str, False),
         "EnvironmentAccountRegion": (str, False),
+        "EnvironmentBlueprintIdentifier": (str, False),
+        "EnvironmentConfigurationId": (str, False),
         "EnvironmentProfileIdentifier": (str, False),
         "EnvironmentRoleArn": (str, False),
         "GlossaryTerms": ([str], False),

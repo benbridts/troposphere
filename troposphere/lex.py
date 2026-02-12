@@ -1122,6 +1122,38 @@ class SlotType(AWSProperty):
     }
 
 
+class DeepgramSpeechModelConfig(AWSProperty):
+    """
+    `DeepgramSpeechModelConfig <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lex-bot-deepgramspeechmodelconfig.html>`__
+    """
+
+    props: PropsDictType = {
+        "ApiTokenSecretArn": (str, True),
+        "ModelId": (str, False),
+    }
+
+
+class SpeechModelConfig(AWSProperty):
+    """
+    `SpeechModelConfig <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lex-bot-speechmodelconfig.html>`__
+    """
+
+    props: PropsDictType = {
+        "DeepgramConfig": (DeepgramSpeechModelConfig, False),
+    }
+
+
+class SpeechRecognitionSettings(AWSProperty):
+    """
+    `SpeechRecognitionSettings <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lex-bot-speechrecognitionsettings.html>`__
+    """
+
+    props: PropsDictType = {
+        "SpeechModelConfig": (SpeechModelConfig, False),
+        "SpeechModelPreference": (str, False),
+    }
+
+
 class SpeechFoundationModel(AWSProperty):
     """
     `SpeechFoundationModel <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lex-bot-speechfoundationmodel.html>`__
@@ -1168,6 +1200,7 @@ class BotLocale(AWSProperty):
         "NluConfidenceThreshold": (double, True),
         "SlotTypes": ([SlotType], False),
         "SpeechDetectionSensitivity": (str, False),
+        "SpeechRecognitionSettings": (SpeechRecognitionSettings, False),
         "UnifiedSpeechSettings": (UnifiedSpeechSettings, False),
         "VoiceSettings": (VoiceSettings, False),
     }

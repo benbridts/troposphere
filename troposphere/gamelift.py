@@ -114,6 +114,17 @@ class IpPermission(AWSProperty):
     }
 
 
+class ManagedCapacityConfiguration(AWSProperty):
+    """
+    `ManagedCapacityConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-fleet-managedcapacityconfiguration.html>`__
+    """
+
+    props: PropsDictType = {
+        "ScaleInAfterInactivityMinutes": (integer, False),
+        "ZeroCapacityStrategy": (str, True),
+    }
+
+
 class LocationCapacity(AWSProperty):
     """
     `LocationCapacity <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-fleet-locationcapacity.html>`__
@@ -121,6 +132,7 @@ class LocationCapacity(AWSProperty):
 
     props: PropsDictType = {
         "DesiredEC2Instances": (integer, False),
+        "ManagedCapacityConfiguration": (ManagedCapacityConfiguration, False),
         "MaxSize": (integer, True),
         "MinSize": (integer, False),
     }

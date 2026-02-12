@@ -10,6 +10,16 @@ from . import AWSObject, AWSProperty, PropsDictType, Tags
 from .validators import boolean, double
 
 
+class ArchivingOptions(AWSProperty):
+    """
+    `ArchivingOptions <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ses-configurationset-archivingoptions.html>`__
+    """
+
+    props: PropsDictType = {
+        "ArchiveArn": (str, False),
+    }
+
+
 class DeliveryOptions(AWSProperty):
     """
     `DeliveryOptions <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ses-configurationset-deliveryoptions.html>`__
@@ -134,6 +144,7 @@ class ConfigurationSet(AWSObject):
     resource_type = "AWS::SES::ConfigurationSet"
 
     props: PropsDictType = {
+        "ArchivingOptions": (ArchivingOptions, False),
         "DeliveryOptions": (DeliveryOptions, False),
         "Name": (str, False),
         "ReputationOptions": (ReputationOptions, False),
@@ -1213,6 +1224,7 @@ class Template(AWSObject):
     resource_type = "AWS::SES::Template"
 
     props: PropsDictType = {
+        "Tags": (Tags, False),
         "Template": (EmailTemplate, False),
     }
 

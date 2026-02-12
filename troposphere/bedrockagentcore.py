@@ -110,6 +110,40 @@ class CodeInterpreterCustom(AWSObject):
     }
 
 
+class ClaimMatchValueType(AWSProperty):
+    """
+    `ClaimMatchValueType <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-runtime-claimmatchvaluetype.html>`__
+    """
+
+    props: PropsDictType = {
+        "MatchValueString": (str, False),
+        "MatchValueStringList": ([str], False),
+    }
+
+
+class AuthorizingClaimMatchValueType(AWSProperty):
+    """
+    `AuthorizingClaimMatchValueType <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-runtime-authorizingclaimmatchvaluetype.html>`__
+    """
+
+    props: PropsDictType = {
+        "ClaimMatchOperator": (str, True),
+        "ClaimMatchValue": (ClaimMatchValueType, True),
+    }
+
+
+class CustomClaimValidationType(AWSProperty):
+    """
+    `CustomClaimValidationType <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-runtime-customclaimvalidationtype.html>`__
+    """
+
+    props: PropsDictType = {
+        "AuthorizingClaimMatchValue": (AuthorizingClaimMatchValueType, True),
+        "InboundTokenClaimName": (str, True),
+        "InboundTokenClaimValueType": (str, True),
+    }
+
+
 class CustomJWTAuthorizerConfiguration(AWSProperty):
     """
     `CustomJWTAuthorizerConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-runtime-customjwtauthorizerconfiguration.html>`__
@@ -118,6 +152,8 @@ class CustomJWTAuthorizerConfiguration(AWSProperty):
     props: PropsDictType = {
         "AllowedAudience": ([str], False),
         "AllowedClients": ([str], False),
+        "AllowedScopes": ([str], False),
+        "CustomClaims": ([CustomClaimValidationType], False),
         "DiscoveryUrl": (str, True),
     }
 
@@ -913,40 +949,6 @@ class WorkloadIdentity(AWSObject):
         "AllowedResourceOauth2ReturnUrls": ([str], False),
         "Name": (str, True),
         "Tags": (Tags, False),
-    }
-
-
-class ClaimMatchValueType(AWSProperty):
-    """
-    `ClaimMatchValueType <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-gateway-claimmatchvaluetype.html>`__
-    """
-
-    props: PropsDictType = {
-        "MatchValueString": (str, False),
-        "MatchValueStringList": ([str], False),
-    }
-
-
-class AuthorizingClaimMatchValueType(AWSProperty):
-    """
-    `AuthorizingClaimMatchValueType <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-gateway-authorizingclaimmatchvaluetype.html>`__
-    """
-
-    props: PropsDictType = {
-        "ClaimMatchOperator": (str, True),
-        "ClaimMatchValue": (ClaimMatchValueType, True),
-    }
-
-
-class CustomClaimValidationType(AWSProperty):
-    """
-    `CustomClaimValidationType <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-gateway-customclaimvalidationtype.html>`__
-    """
-
-    props: PropsDictType = {
-        "AuthorizingClaimMatchValue": (AuthorizingClaimMatchValueType, True),
-        "InboundTokenClaimName": (str, True),
-        "InboundTokenClaimValueType": (str, True),
     }
 
 
