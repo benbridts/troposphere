@@ -1,3 +1,23 @@
+4.10.0 (2026*02*12)
+-------------------------------
+* Remove some malformed properties in spec 226.0.0
+* Add __pycache__ to .gitignore
+* Updates from spec version 226.0.0 (#2347)
+* Add AWS::DevOpsAgent
+* resources_aws.md: reflect doc move from UserGuide to TemplateReference
+* Add AWS::ARCRegionSwitch
+* Add helper script for generating resources_aws.md
+* Remove IoTFleetHub and LookoutMetrics
+* Patches for spec 227.0.0
+* Updates from spec version 228.0.0
+* Updates from spec version 229.0.0
+* Updates from spec version 230.0.0
+* Updates from spec version 231.0.0
+* Updates from spec version 232.0.0
+* Updates from spec version 234.0.0
+* Updates from spec version 235.0.0
+* Add AWS::Cases and AWS::MWAAServerless
+
 4.9.6 (2025*12*03)
 -------------------------------
 * Fix regression in RDS validator (#2346)
