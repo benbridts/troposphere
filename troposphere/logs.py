@@ -173,6 +173,7 @@ class LogGroup(AWSObject):
 
     props: PropsDictType = {
         "DataProtectionPolicy": (dict, False),
+        "DeletionProtectionEnabled": (boolean, False),
         "FieldIndexPolicies": (Tags, False),
         "KmsKeyId": (str, False),
         "LogGroupClass": (str, False),

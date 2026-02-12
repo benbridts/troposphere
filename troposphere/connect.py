@@ -676,6 +676,30 @@ class HoursOfOperationOverrideConfig(AWSProperty):
     }
 
 
+class RecurrencePattern(AWSProperty):
+    """
+    `RecurrencePattern <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connect-hoursofoperation-recurrencepattern.html>`__
+    """
+
+    props: PropsDictType = {
+        "ByMonth": ([integer], False),
+        "ByMonthDay": ([integer], False),
+        "ByWeekdayOccurrence": ([integer], False),
+        "Frequency": (str, False),
+        "Interval": (integer, False),
+    }
+
+
+class RecurrenceConfig(AWSProperty):
+    """
+    `RecurrenceConfig <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connect-hoursofoperation-recurrenceconfig.html>`__
+    """
+
+    props: PropsDictType = {
+        "RecurrencePattern": (RecurrencePattern, True),
+    }
+
+
 class HoursOfOperationOverride(AWSProperty):
     """
     `HoursOfOperationOverride <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connect-hoursofoperation-hoursofoperationoverride.html>`__
@@ -688,6 +712,19 @@ class HoursOfOperationOverride(AWSProperty):
         "OverrideConfig": ([HoursOfOperationOverrideConfig], True),
         "OverrideDescription": (str, False),
         "OverrideName": (str, True),
+        "OverrideType": (str, False),
+        "RecurrenceConfig": (RecurrenceConfig, False),
+    }
+
+
+class HoursOfOperationsIdentifier(AWSProperty):
+    """
+    `HoursOfOperationsIdentifier <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connect-hoursofoperation-hoursofoperationsidentifier.html>`__
+    """
+
+    props: PropsDictType = {
+        "Id": (str, True),
+        "Name": (str, False),
     }
 
 
@@ -699,11 +736,13 @@ class HoursOfOperation(AWSObject):
     resource_type = "AWS::Connect::HoursOfOperation"
 
     props: PropsDictType = {
+        "ChildHoursOfOperations": ([HoursOfOperationsIdentifier], False),
         "Config": ([HoursOfOperationConfig], True),
         "Description": (str, False),
         "HoursOfOperationOverrides": ([HoursOfOperationOverride], False),
         "InstanceArn": (str, True),
         "Name": (str, True),
+        "ParentHoursOfOperations": ([HoursOfOperationsIdentifier], False),
         "Tags": (Tags, False),
         "TimeZone": (str, True),
     }

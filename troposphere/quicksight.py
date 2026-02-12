@@ -6908,13 +6908,17 @@ class Capabilities(AWSProperty):
     """
 
     props: PropsDictType = {
+        "Action": (str, False),
         "AddOrRunAnomalyDetectionForAnalyses": (str, False),
         "Analysis": (str, False),
+        "Automate": (str, False),
+        "ChatAgent": (str, False),
         "CreateAndUpdateDashboardEmailReports": (str, False),
         "CreateAndUpdateDataSources": (str, False),
         "CreateAndUpdateDatasets": (str, False),
         "CreateAndUpdateThemes": (str, False),
         "CreateAndUpdateThresholdAlerts": (str, False),
+        "CreateChatAgents": (str, False),
         "CreateSPICEDataset": (str, False),
         "CreateSharedFolders": (str, False),
         "Dashboard": (str, False),
@@ -6924,14 +6928,22 @@ class Capabilities(AWSProperty):
         "ExportToExcelInScheduledReports": (str, False),
         "ExportToPdf": (str, False),
         "ExportToPdfInScheduledReports": (str, False),
+        "Flow": (str, False),
         "IncludeContentInScheduledReportsEmail": (str, False),
+        "KnowledgeBase": (str, False),
+        "PerformFlowUiTask": (str, False),
         "PrintReports": (str, False),
+        "PublishWithoutApproval": (str, False),
         "RenameSharedFolders": (str, False),
+        "Research": (str, False),
         "ShareAnalyses": (str, False),
         "ShareDashboards": (str, False),
         "ShareDataSources": (str, False),
         "ShareDatasets": (str, False),
+        "Space": (str, False),
         "SubscribeDashboardEmailReports": (str, False),
+        "UseAgentWebSearch": (str, False),
+        "UseBedrockModels": (str, False),
         "ViewAccountSPICECapacity": (str, False),
     }
 
@@ -8584,6 +8596,18 @@ class CredentialPair(AWSProperty):
     }
 
 
+class KeyPairCredentials(AWSProperty):
+    """
+    `KeyPairCredentials <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-keypaircredentials.html>`__
+    """
+
+    props: PropsDictType = {
+        "KeyPairUsername": (str, True),
+        "PrivateKey": (str, True),
+        "PrivateKeyPassphrase": (str, False),
+    }
+
+
 class DataSourceCredentials(AWSProperty):
     """
     `DataSourceCredentials <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-datasourcecredentials.html>`__
@@ -8592,6 +8616,7 @@ class DataSourceCredentials(AWSProperty):
     props: PropsDictType = {
         "CopySourceArn": (str, False),
         "CredentialPair": (CredentialPair, False),
+        "KeyPairCredentials": (KeyPairCredentials, False),
         "SecretArn": (str, False),
     }
 

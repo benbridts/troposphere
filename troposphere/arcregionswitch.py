@@ -23,6 +23,37 @@ class AssociatedAlarm(AWSProperty):
     }
 
 
+class S3ReportOutputConfiguration(AWSProperty):
+    """
+    `S3ReportOutputConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-s3reportoutputconfiguration.html>`__
+    """
+
+    props: PropsDictType = {
+        "BucketOwner": (str, False),
+        "BucketPath": (str, False),
+    }
+
+
+class ReportOutputConfiguration(AWSProperty):
+    """
+    `ReportOutputConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-reportoutputconfiguration.html>`__
+    """
+
+    props: PropsDictType = {
+        "S3Configuration": (S3ReportOutputConfiguration, True),
+    }
+
+
+class ReportConfiguration(AWSProperty):
+    """
+    `ReportConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-reportconfiguration.html>`__
+    """
+
+    props: PropsDictType = {
+        "ReportOutput": ([ReportOutputConfiguration], False),
+    }
+
+
 class TriggerCondition(AWSProperty):
     """
     `TriggerCondition <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-triggercondition.html>`__
@@ -94,6 +125,32 @@ class CustomActionLambdaConfiguration(AWSProperty):
         "RetryIntervalMinutes": (double, True),
         "TimeoutMinutes": (double, False),
         "Ungraceful": (LambdaUngraceful, False),
+    }
+
+
+class DocumentDbUngraceful(AWSProperty):
+    """
+    `DocumentDbUngraceful <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-documentdbungraceful.html>`__
+    """
+
+    props: PropsDictType = {
+        "Ungraceful": (str, False),
+    }
+
+
+class DocumentDbConfiguration(AWSProperty):
+    """
+    `DocumentDbConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-documentdbconfiguration.html>`__
+    """
+
+    props: PropsDictType = {
+        "Behavior": (dict, True),
+        "CrossAccountRole": (str, False),
+        "DatabaseClusterArns": ([str], True),
+        "ExternalId": (str, False),
+        "GlobalClusterIdentifier": (str, True),
+        "TimeoutMinutes": (double, False),
+        "Ungraceful": (DocumentDbUngraceful, False),
     }
 
 
@@ -312,6 +369,7 @@ class ExecutionBlockConfiguration(AWSProperty):
     props: PropsDictType = {
         "ArcRoutingControlConfig": (ArcRoutingControlConfiguration, False),
         "CustomActionLambdaConfig": (CustomActionLambdaConfiguration, False),
+        "DocumentDbConfig": (DocumentDbConfiguration, False),
         "Ec2AsgCapacityIncreaseConfig": (Ec2AsgCapacityIncreaseConfiguration, False),
         "EcsCapacityIncreaseConfig": (EcsCapacityIncreaseConfiguration, False),
         "EksResourceScalingConfig": (EksResourceScalingConfiguration, False),
@@ -365,6 +423,7 @@ class Plan(AWSObject):
         "RecoveryApproach": (str, True),
         "RecoveryTimeObjectiveMinutes": (double, False),
         "Regions": ([str], True),
+        "ReportConfiguration": (ReportConfiguration, False),
         "Tags": (dict, False),
         "Triggers": ([Trigger], False),
         "Workflows": ([Workflow], True),

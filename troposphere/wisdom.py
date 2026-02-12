@@ -468,13 +468,28 @@ class Assistant(AWSObject):
     }
 
 
+class ExternalBedrockKnowledgeBaseConfig(AWSProperty):
+    """
+    `ExternalBedrockKnowledgeBaseConfig <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-assistantassociation-externalbedrockknowledgebaseconfig.html>`__
+    """
+
+    props: PropsDictType = {
+        "AccessRoleArn": (str, True),
+        "BedrockKnowledgeBaseArn": (str, True),
+    }
+
+
 class AssociationData(AWSProperty):
     """
     `AssociationData <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-assistantassociation-associationdata.html>`__
     """
 
     props: PropsDictType = {
-        "KnowledgeBaseId": (str, True),
+        "ExternalBedrockKnowledgeBaseConfig": (
+            ExternalBedrockKnowledgeBaseConfig,
+            False,
+        ),
+        "KnowledgeBaseId": (str, False),
     }
 
 

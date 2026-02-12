@@ -459,27 +459,22 @@ class ConfigurationPolicy(AWSObject):
     }
 
 
-class JiraCloud(AWSProperty):
+class JiraCloudProviderConfiguration(AWSProperty):
     """
-    `JiraCloud <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-connectorv2-jiracloud.html>`__
+    `JiraCloudProviderConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-connectorv2-jiracloudproviderconfiguration.html>`__
     """
 
     props: PropsDictType = {
-        "AuthStatus": (str, False),
-        "AuthUrl": (str, False),
-        "CloudId": (str, False),
-        "Domain": (str, False),
         "ProjectKey": (str, True),
     }
 
 
-class ServiceNow(AWSProperty):
+class ServiceNowProviderConfiguration(AWSProperty):
     """
-    `ServiceNow <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-connectorv2-servicenow.html>`__
+    `ServiceNowProviderConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-connectorv2-servicenowproviderconfiguration.html>`__
     """
 
     props: PropsDictType = {
-        "AuthStatus": (str, False),
         "InstanceName": (str, True),
         "SecretArn": (str, True),
     }
@@ -491,8 +486,8 @@ class Provider(AWSProperty):
     """
 
     props: PropsDictType = {
-        "JiraCloud": (JiraCloud, False),
-        "ServiceNow": (ServiceNow, False),
+        "JiraCloud": (JiraCloudProviderConfiguration, False),
+        "ServiceNow": (ServiceNowProviderConfiguration, False),
     }
 
 

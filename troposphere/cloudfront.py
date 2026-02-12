@@ -482,6 +482,16 @@ class Logging(AWSProperty):
     }
 
 
+class OriginMtlsConfig(AWSProperty):
+    """
+    `OriginMtlsConfig <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-originmtlsconfig.html>`__
+    """
+
+    props: PropsDictType = {
+        "ClientCertificateArn": (str, True),
+    }
+
+
 class CustomOriginConfig(AWSProperty):
     """
     `CustomOriginConfig <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-customoriginconfig.html>`__
@@ -492,6 +502,7 @@ class CustomOriginConfig(AWSProperty):
         "HTTPSPort": (validate_network_port, False),
         "IpAddressType": (str, False),
         "OriginKeepaliveTimeout": (integer, False),
+        "OriginMtlsConfig": (OriginMtlsConfig, False),
         "OriginProtocolPolicy": (str, True),
         "OriginReadTimeout": (integer, False),
         "OriginSSLProtocols": ([str], False),

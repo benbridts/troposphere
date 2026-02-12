@@ -559,6 +559,7 @@ class FleetLaunchTemplateOverridesRequest(AWSProperty):
 
     props: PropsDictType = {
         "AvailabilityZone": (str, False),
+        "AvailabilityZoneId": (str, False),
         "BlockDeviceMappings": ([BlockDeviceMapping], False),
         "InstanceRequirements": (InstanceRequirementsRequest, False),
         "InstanceType": (str, False),
@@ -2441,6 +2442,7 @@ class SpotPlacement(AWSProperty):
 
     props: PropsDictType = {
         "AvailabilityZone": (str, False),
+        "AvailabilityZoneId": (str, False),
         "GroupName": (str, False),
         "Tenancy": (str, False),
     }
@@ -2492,6 +2494,7 @@ class LaunchTemplateOverrides(AWSProperty):
 
     props: PropsDictType = {
         "AvailabilityZone": (str, False),
+        "AvailabilityZoneId": (str, False),
         "InstanceRequirements": (InstanceRequirementsRequest, False),
         "InstanceType": (str, False),
         "Priority": (double, False),

@@ -1212,6 +1212,18 @@ class FirehoseAction(AWSProperty):
     }
 
 
+class BatchConfig(AWSProperty):
+    """
+    `BatchConfig <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-topicrule-batchconfig.html>`__
+    """
+
+    props: PropsDictType = {
+        "MaxBatchOpenMs": (integer, False),
+        "MaxBatchSize": (integer, False),
+        "MaxBatchSizeBytes": (integer, False),
+    }
+
+
 class HttpActionHeader(AWSProperty):
     """
     `HttpActionHeader <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-topicrule-httpactionheader.html>`__
@@ -1252,7 +1264,9 @@ class HttpAction(AWSProperty):
 
     props: PropsDictType = {
         "Auth": (HttpAuthorization, False),
+        "BatchConfig": (BatchConfig, False),
         "ConfirmationUrl": (str, False),
+        "EnableBatching": (boolean, False),
         "Headers": ([HttpActionHeader], False),
         "Url": (str, True),
     }

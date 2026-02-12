@@ -677,6 +677,7 @@ class EnvironmentBlueprintConfiguration(AWSObject):
         "EnabledRegions": ([str], True),
         "EnvironmentBlueprintIdentifier": (str, True),
         "EnvironmentRolePermissionBoundary": (str, False),
+        "GlobalParameters": (dict, False),
         "ManageAccessRoleArn": (str, False),
         "ProvisioningConfigurations": ([ProvisioningConfiguration], False),
         "ProvisioningRoleArn": (str, False),
@@ -1155,6 +1156,7 @@ class ProjectProfile(AWSObject):
         "EnvironmentConfigurations": ([EnvironmentConfiguration], False),
         "Name": (str, True),
         "Status": (str, False),
+        "UseDefaultConfigurations": (boolean, False),
     }
 
 

@@ -357,6 +357,7 @@ class Scte(AWSProperty):
 
     props: PropsDictType = {
         "ScteFilter": ([str], False),
+        "ScteInSegments": (str, False),
     }
 
 

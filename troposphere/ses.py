@@ -42,6 +42,37 @@ class SendingOptions(AWSProperty):
     }
 
 
+class OverallConfidenceThreshold(AWSProperty):
+    """
+    `OverallConfidenceThreshold <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ses-configurationset-overallconfidencethreshold.html>`__
+    """
+
+    props: PropsDictType = {
+        "ConfidenceVerdictThreshold": (str, True),
+    }
+
+
+class ConditionThreshold(AWSProperty):
+    """
+    `ConditionThreshold <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ses-configurationset-conditionthreshold.html>`__
+    """
+
+    props: PropsDictType = {
+        "ConditionThresholdEnabled": (str, True),
+        "OverallConfidenceThreshold": (OverallConfidenceThreshold, False),
+    }
+
+
+class ValidationOptions(AWSProperty):
+    """
+    `ValidationOptions <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ses-configurationset-validationoptions.html>`__
+    """
+
+    props: PropsDictType = {
+        "ConditionThreshold": (ConditionThreshold, True),
+    }
+
+
 class SuppressionOptions(AWSProperty):
     """
     `SuppressionOptions <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ses-configurationset-suppressionoptions.html>`__
@@ -49,6 +80,7 @@ class SuppressionOptions(AWSProperty):
 
     props: PropsDictType = {
         "SuppressedReasons": ([str], False),
+        "ValidationOptions": (ValidationOptions, False),
     }
 
 
