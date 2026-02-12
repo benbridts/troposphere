@@ -598,6 +598,38 @@ class EvaluationFormTargetConfiguration(AWSProperty):
     }
 
 
+class EvaluationReviewNotificationRecipientValue(AWSProperty):
+    """
+    `EvaluationReviewNotificationRecipientValue <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connect-evaluationform-evaluationreviewnotificationrecipientvalue.html>`__
+    """
+
+    props: PropsDictType = {
+        "UserId": (str, False),
+    }
+
+
+class EvaluationReviewNotificationRecipient(AWSProperty):
+    """
+    `EvaluationReviewNotificationRecipient <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connect-evaluationform-evaluationreviewnotificationrecipient.html>`__
+    """
+
+    props: PropsDictType = {
+        "Type": (str, True),
+        "Value": (EvaluationReviewNotificationRecipientValue, True),
+    }
+
+
+class EvaluationReviewConfiguration(AWSProperty):
+    """
+    `EvaluationReviewConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connect-evaluationform-evaluationreviewconfiguration.html>`__
+    """
+
+    props: PropsDictType = {
+        "EligibilityDays": (integer, False),
+        "ReviewNotificationRecipients": ([EvaluationReviewNotificationRecipient], True),
+    }
+
+
 class ScoringStrategy(AWSProperty):
     """
     `ScoringStrategy <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connect-evaluationform-scoringstrategy.html>`__
@@ -622,6 +654,7 @@ class EvaluationForm(AWSObject):
         "InstanceArn": (str, True),
         "Items": ([EvaluationFormBaseItem], True),
         "LanguageConfiguration": (EvaluationFormLanguageConfiguration, False),
+        "ReviewConfiguration": (EvaluationReviewConfiguration, False),
         "ScoringStrategy": (ScoringStrategy, False),
         "Status": (str, True),
         "Tags": (Tags, False),

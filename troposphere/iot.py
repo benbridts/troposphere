@@ -589,6 +589,18 @@ class JobTemplate(AWSObject):
     }
 
 
+class EventConfiguration(AWSProperty):
+    """
+    `EventConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-logging-eventconfiguration.html>`__
+    """
+
+    props: PropsDictType = {
+        "EventType": (str, True),
+        "LogDestination": (str, False),
+        "LogLevel": (str, False),
+    }
+
+
 class Logging(AWSObject):
     """
     `Logging <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-logging.html>`__
@@ -599,6 +611,7 @@ class Logging(AWSObject):
     props: PropsDictType = {
         "AccountId": (str, True),
         "DefaultLogLevel": (str, True),
+        "EventConfigurations": ([EventConfiguration], False),
         "RoleArn": (str, True),
     }
 

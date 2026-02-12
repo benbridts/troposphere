@@ -279,6 +279,53 @@ class MetadataConfiguration(AWSProperty):
     }
 
 
+class ApiGatewayToolFilter(AWSProperty):
+    """
+    `ApiGatewayToolFilter <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-gatewaytarget-apigatewaytoolfilter.html>`__
+    """
+
+    props: PropsDictType = {
+        "FilterPath": (str, True),
+        "Methods": ([str], True),
+    }
+
+
+class ApiGatewayToolOverride(AWSProperty):
+    """
+    `ApiGatewayToolOverride <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-gatewaytarget-apigatewaytooloverride.html>`__
+    """
+
+    props: PropsDictType = {
+        "Description": (str, False),
+        "Method": (str, True),
+        "Name": (str, True),
+        "Path": (str, True),
+    }
+
+
+class ApiGatewayToolConfiguration(AWSProperty):
+    """
+    `ApiGatewayToolConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-gatewaytarget-apigatewaytoolconfiguration.html>`__
+    """
+
+    props: PropsDictType = {
+        "ToolFilters": ([ApiGatewayToolFilter], True),
+        "ToolOverrides": ([ApiGatewayToolOverride], False),
+    }
+
+
+class ApiGatewayTargetConfiguration(AWSProperty):
+    """
+    `ApiGatewayTargetConfiguration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-gatewaytarget-apigatewaytargetconfiguration.html>`__
+    """
+
+    props: PropsDictType = {
+        "ApiGatewayToolConfiguration": (ApiGatewayToolConfiguration, True),
+        "RestApiId": (str, True),
+        "Stage": (str, True),
+    }
+
+
 class S3Configuration(AWSProperty):
     """
     `S3Configuration <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-gatewaytarget-s3configuration.html>`__
@@ -366,6 +413,7 @@ class McpTargetConfiguration(AWSProperty):
     """
 
     props: PropsDictType = {
+        "ApiGateway": (ApiGatewayTargetConfiguration, False),
         "Lambda": (McpLambdaTargetConfiguration, False),
         "McpServer": (McpServerTargetConfiguration, False),
         "OpenApiSchema": (ApiSchemaConfiguration, False),
@@ -391,7 +439,7 @@ class GatewayTarget(AWSObject):
     resource_type = "AWS::BedrockAgentCore::GatewayTarget"
 
     props: PropsDictType = {
-        "CredentialProviderConfigurations": ([CredentialProviderConfiguration], True),
+        "CredentialProviderConfigurations": ([CredentialProviderConfiguration], False),
         "Description": (str, False),
         "GatewayIdentifier": (str, False),
         "MetadataConfiguration": (MetadataConfiguration, False),

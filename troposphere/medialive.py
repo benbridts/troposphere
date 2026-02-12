@@ -646,7 +646,9 @@ class PipelineLockingSettings(AWSProperty):
     `PipelineLockingSettings <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-pipelinelockingsettings.html>`__
     """
 
-    props: PropsDictType = {}
+    props: PropsDictType = {
+        "PipelineLockingMethod": (str, False),
+    }
 
 
 class OutputLockingSettings(AWSProperty):
@@ -2362,6 +2364,38 @@ class InputSpecification(AWSProperty):
     }
 
 
+class FollowerChannelSettings(AWSProperty):
+    """
+    `FollowerChannelSettings <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-followerchannelsettings.html>`__
+    """
+
+    props: PropsDictType = {
+        "LinkedChannelType": (str, False),
+        "PrimaryChannelArn": (str, False),
+    }
+
+
+class PrimaryChannelSettings(AWSProperty):
+    """
+    `PrimaryChannelSettings <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-primarychannelsettings.html>`__
+    """
+
+    props: PropsDictType = {
+        "LinkedChannelType": (str, False),
+    }
+
+
+class LinkedChannelSettings(AWSProperty):
+    """
+    `LinkedChannelSettings <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-linkedchannelsettings.html>`__
+    """
+
+    props: PropsDictType = {
+        "FollowerChannelSettings": (FollowerChannelSettings, False),
+        "PrimaryChannelSettings": (PrimaryChannelSettings, False),
+    }
+
+
 class MaintenanceCreateSettings(AWSProperty):
     """
     `MaintenanceCreateSettings <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-maintenancecreatesettings.html>`__
@@ -2465,6 +2499,7 @@ class Channel(AWSObject):
         "EncoderSettings": (EncoderSettings, False),
         "InputAttachments": ([InputAttachment], False),
         "InputSpecification": (InputSpecification, False),
+        "LinkedChannelSettings": (LinkedChannelSettings, False),
         "LogLevel": (str, False),
         "Maintenance": (MaintenanceCreateSettings, False),
         "Name": (str, False),
