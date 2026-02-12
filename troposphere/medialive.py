@@ -630,6 +630,16 @@ class InputLossBehavior(AWSProperty):
     }
 
 
+class DisabledLockingSettings(AWSProperty):
+    """
+    `DisabledLockingSettings <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-disabledlockingsettings.html>`__
+    """
+
+    props: PropsDictType = {
+        "CustomEpoch": (str, False),
+    }
+
+
 class EpochLockingSettings(AWSProperty):
     """
     `EpochLockingSettings <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-epochlockingsettings.html>`__
@@ -647,6 +657,7 @@ class PipelineLockingSettings(AWSProperty):
     """
 
     props: PropsDictType = {
+        "CustomEpoch": (str, False),
         "PipelineLockingMethod": (str, False),
     }
 
@@ -657,6 +668,7 @@ class OutputLockingSettings(AWSProperty):
     """
 
     props: PropsDictType = {
+        "DisabledLockingSettings": (DisabledLockingSettings, False),
         "EpochLockingSettings": (EpochLockingSettings, False),
         "PipelineLockingSettings": (PipelineLockingSettings, False),
     }
@@ -1418,12 +1430,23 @@ class HlsGroupSettings(AWSProperty):
     }
 
 
+class MediaPackageAdditionalDestinations(AWSProperty):
+    """
+    `MediaPackageAdditionalDestinations <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-mediapackageadditionaldestinations.html>`__
+    """
+
+    props: PropsDictType = {
+        "Destination": (OutputLocationRef, False),
+    }
+
+
 class MediaPackageV2GroupSettings(AWSProperty):
     """
     `MediaPackageV2GroupSettings <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-mediapackagev2groupsettings.html>`__
     """
 
     props: PropsDictType = {
+        "AdditionalDestinations": ([MediaPackageAdditionalDestinations], False),
         "CaptionLanguageMappings": ([CaptionLanguageMapping], False),
         "Id3Behavior": (str, False),
         "KlvBehavior": (str, False),
@@ -1663,6 +1686,7 @@ class Av1Settings(AWSProperty):
         "SpatialAq": (str, False),
         "TemporalAq": (str, False),
         "TimecodeBurninSettings": (TimecodeBurninSettings, False),
+        "TimecodeInsertion": (str, False),
     }
 
 
@@ -2413,9 +2437,11 @@ class MediaPackageOutputDestinationSettings(AWSProperty):
     """
 
     props: PropsDictType = {
+        "ChannelEndpointId": (str, False),
         "ChannelGroup": (str, False),
         "ChannelId": (str, False),
         "ChannelName": (str, False),
+        "MediaPackageRegionName": (str, False),
     }
 
 

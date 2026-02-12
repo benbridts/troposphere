@@ -400,6 +400,7 @@ class AutoScalingGroup(AWSObject):
         "Context": (str, False),
         "Cooldown": (str, False),
         "DefaultInstanceWarmup": (integer, False),
+        "DeletionProtection": (str, False),
         "DesiredCapacity": (str, False),
         "DesiredCapacityType": (str, False),
         "HealthCheckGracePeriod": (integer, False),

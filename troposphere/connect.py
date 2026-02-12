@@ -1505,6 +1505,63 @@ class TrafficDistributionGroup(AWSObject):
     }
 
 
+class AfterContactWorkConfig(AWSProperty):
+    """
+    `AfterContactWorkConfig <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connect-user-aftercontactworkconfig.html>`__
+    """
+
+    props: PropsDictType = {
+        "AfterContactWorkTimeLimit": (integer, False),
+    }
+
+
+class AfterContactWorkConfigPerChannel(AWSProperty):
+    """
+    `AfterContactWorkConfigPerChannel <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connect-user-aftercontactworkconfigperchannel.html>`__
+    """
+
+    props: PropsDictType = {
+        "AfterContactWorkConfig": (AfterContactWorkConfig, True),
+        "AgentFirstCallbackAfterContactWorkConfig": (AfterContactWorkConfig, False),
+        "Channel": (str, True),
+    }
+
+
+class AutoAcceptConfig(AWSProperty):
+    """
+    `AutoAcceptConfig <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connect-user-autoacceptconfig.html>`__
+    """
+
+    props: PropsDictType = {
+        "AgentFirstCallbackAutoAccept": (boolean, False),
+        "AutoAccept": (boolean, True),
+        "Channel": (str, True),
+    }
+
+
+class PersistentConnectionConfig(AWSProperty):
+    """
+    `PersistentConnectionConfig <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connect-user-persistentconnectionconfig.html>`__
+    """
+
+    props: PropsDictType = {
+        "Channel": (str, True),
+        "PersistentConnection": (boolean, True),
+    }
+
+
+class PhoneNumberConfig(AWSProperty):
+    """
+    `PhoneNumberConfig <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connect-user-phonenumberconfig.html>`__
+    """
+
+    props: PropsDictType = {
+        "Channel": (str, True),
+        "PhoneNumber": (str, False),
+        "PhoneType": (str, True),
+    }
+
+
 class UserIdentityInfo(AWSProperty):
     """
     `UserIdentityInfo <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connect-user-useridentityinfo.html>`__
@@ -1529,7 +1586,7 @@ class UserPhoneConfig(AWSProperty):
         "AutoAccept": (boolean, False),
         "DeskPhoneNumber": (str, False),
         "PersistentConnection": (boolean, False),
-        "PhoneType": (str, True),
+        "PhoneType": (str, False),
     }
 
 
@@ -1545,6 +1602,17 @@ class UserProficiency(AWSProperty):
     }
 
 
+class VoiceEnhancementConfig(AWSProperty):
+    """
+    `VoiceEnhancementConfig <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connect-user-voiceenhancementconfig.html>`__
+    """
+
+    props: PropsDictType = {
+        "Channel": (str, True),
+        "VoiceEnhancementMode": (str, True),
+    }
+
+
 class User(AWSObject):
     """
     `User <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connect-user.html>`__
@@ -1553,17 +1621,22 @@ class User(AWSObject):
     resource_type = "AWS::Connect::User"
 
     props: PropsDictType = {
+        "AfterContactWorkConfigs": ([AfterContactWorkConfigPerChannel], False),
+        "AutoAcceptConfigs": ([AutoAcceptConfig], False),
         "DirectoryUserId": (str, False),
         "HierarchyGroupArn": (str, False),
         "IdentityInfo": (UserIdentityInfo, False),
         "InstanceArn": (str, True),
         "Password": (str, False),
-        "PhoneConfig": (UserPhoneConfig, True),
+        "PersistentConnectionConfigs": ([PersistentConnectionConfig], False),
+        "PhoneConfig": (UserPhoneConfig, False),
+        "PhoneNumberConfigs": ([PhoneNumberConfig], False),
         "RoutingProfileArn": (str, True),
         "SecurityProfileArns": ([str], True),
         "Tags": (Tags, False),
         "UserProficiencies": ([UserProficiency], False),
         "Username": (str, True),
+        "VoiceEnhancementConfigs": ([VoiceEnhancementConfig], False),
     }
 
 
