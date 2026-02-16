@@ -1,3 +1,8 @@
+4.10.1 (2026*02*16)
+-------------------------------
+* Updates from spec version 236.0.0 (#2348)
+* Rename Transfer.WebApp.EndpointDetails to WebAppEndpointDetails (#2351)
+
 4.10.0 (2026*02*12)
 -------------------------------
 * Remove some malformed properties in spec 226.0.0
