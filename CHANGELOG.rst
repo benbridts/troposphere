@@ -1,3 +1,31 @@
+4.11.0 (2026*09*19)
+-------------------
+* Add script to help with release process
+* Remove old, non-VPC ElastiCacheRedis example
+* Updates from spec version 248.0.0 (#2359)
+* feature: adds support for GetStackOutput intrinsic function (#2360)
+* Fix remaining property dependency ordering in gen.py
+* Updates from spec version 254.0.0
+* Add NestedVirtualization on CpuOptions (#2362)
+* Update `constants.py` with `R7` and `R8` EC2 instance types constants (#2363)
+* serverless: Add InputTransformer to EventBridgeRuleEvent (#2365)
+* Updates from spec version 256.0.0
+* Updates from spec version 257.0.0
+* Updates from spec version 258.0.0
+* Updates from spec version 259.0.0
+* Updates from spec version 260.0.0
+* Updates from spec version 261.0.0
+* Implement patches for 262.0.0
+* Updates from spec version 262.0.0
+* Remove obsolete patches in SageMaker for 263.0.0
+* Updates from spec version 263.0.0
+* Updates from spec version 264.0.0
+* Implement patches for 265.0.0
+* Updates from spec version 265.0.0
+* Remove stale or no-op patches
+* Preserve generated files during copyright updates
+* Add missing services
+
 4.10.2 (2026*05*16)
 -------------------
 * Updates from spec version 237.0.0 (#2352)
